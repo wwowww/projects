@@ -1,0 +1,37 @@
+@use "./colors.scss" as *;
+
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+@mixin light-color {
+  --color-text: #{$text-color-1};
+  --color-background: #{$bg-color-1};
+  --color-Background-RGB: #{hexToRGB($bg-color-1), 0.65};
+  --color-button: #{$btn-color-1};
+  --color-toggle-button: #{$btn-toggle-color-1};
+  --color-toggle-bg-button: #{$bg-color-1};
+}
+
+@mixin dark-color {
+  --color-text: #{$text-color-2};
+  --color-background: #{$bg-color-2};
+  --color-Background-RGB: #{hexToRGB($bg-color-2)};
+  --color-button: #{$btn-color-2};
+  --color-toggle-button: #{$bg-color-1};
+  --color-toggle-bg-button: #{$btn-toggle-color-2};
+  
+}
+
+:root {
+  @include dark-color;
+  @include light-color;
+}
+
+html[data-theme="light"] {
+  @include light-color;
+}
+
+html[data-theme="dark"] {
+  @include dark-color;
+}
