@@ -1,6 +1,6 @@
-import Toggle from "@/components/atoms/toggleButton/Toggle";
-import TrafficLight from "@/components/molecules/trafficLight/TrafficLight";
-import Typography from "@/components/atoms/typography/Typography";
+import Toggle from "@/components/atoms/ToggleButton/Toggle";
+import TrafficLight from "@/components/molecules/TrafficLight/TrafficLight";
+import Typography from "@/components/atoms/Typography/Typography";
 import style from "./Header.module.scss";
 
 const Header = () => {
