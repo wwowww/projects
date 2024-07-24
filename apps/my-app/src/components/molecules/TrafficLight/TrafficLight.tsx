@@ -1,4 +1,4 @@
-import Circle from "@/components/atoms/Circle/Circle";
+import Circle from "@/components/atoms/circle/Circle";
 import style from "./TrafficLight.module.scss";
 
 const TrafficLight = () => {
