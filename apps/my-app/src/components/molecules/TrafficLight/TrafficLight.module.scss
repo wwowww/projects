@@ -1,0 +1,9 @@
+.wrap {
+  display: flex;
+  width: auto;
+  gap: 6px;
+
+  @media screen and (max-width: 408px) {
+    gap: 5px;
+  }
+}

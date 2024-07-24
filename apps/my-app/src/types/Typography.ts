@@ -1,0 +1,25 @@
+export type TypographyVariants = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
+
+export type TypographyCode = 
+"title-32-140-700"
+| "title-22-140-600"
+| "title-20-140-400"
+| "title-18-140-400"
+| "title-17-140-400"
+| "title-16-140-400"
+| "title-15-140-400"
+| "body-20-150-400"
+| "body-19-150-400"
+| "body-18-150-400"
+| "body-17-150-400"
+| "body-16-150-400"
+| "body-15-150-400"
+| "body-14-150-400"
+| "body-13-150-400"
+| "body-12-150-400"
+| "body-11-150-400"
+| "label-14-100-600"
+| "label-13-100-600"
+| "label-12-100-600"
+| "label-11-100-600"
+| "label-10-100-600";

@@ -1,14 +1,5 @@
 import { ReactNode } from "react";
-
-type TypographyVariants = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
-
-export type TypographyCode = 
-| "label-14-100-600"
-| "label-13-100-600"
-| "label-12-100-600"
-| "label-11-100-600"
-| "label-10-100-600"
-
+import { TypographyVariants, TypographyCode } from "@/types/Typography";
 
 type TypographyProps = {
   Tag?: TypographyVariants;
