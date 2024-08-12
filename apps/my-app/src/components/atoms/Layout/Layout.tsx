@@ -10,7 +10,10 @@ type LayoutProps = {
 const Layout = ({padding, borderRadius, children}: LayoutProps) => {
   return (
     <div className={style.layout}>
-      <div className={style.inner} style={{padding: padding, borderRadius: borderRadius}}>
+      <div className={style.inner} style={{
+        padding: padding,
+        borderRadius: borderRadius
+      }}>
         {children}
       </div>
     </div>

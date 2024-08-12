@@ -1,0 +1,35 @@
+.button {
+  border: none;
+  padding: 7px 10px;
+  border-radius: 5px;
+  color: #fff;
+  transition: ease-in 0.2s;
+  
+  &.scale {
+    animation: scale 1s 7;
+  }
+
+  &.basic {
+    background-color: var(--color-button);
+  }
+
+  &.back {
+    background-color: #7d7d7d;
+  }
+
+  &:hover {
+    transition: ease-in 0.2s;
+    opacity: .88;
+  }
+}
+
+.button,
+.anchor {
+  cursor: pointer;
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.07);
+  }
+}

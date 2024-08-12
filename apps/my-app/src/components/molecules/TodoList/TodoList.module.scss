@@ -1,0 +1,21 @@
+@use "@/assets/styles/_mixin.scss" as *;
+
+.list {
+  display: flex;
+  gap: 10px;
+  color: var(--color-text);
+  background-color: var(--color-sub-background);
+  border-radius: 5px;
+  padding: 12px;
+
+  .label {
+    h2, h3, h4, h5, h6 {
+      @include ellipsis;
+    }
+  
+    p, sapn {
+      @include ellipsis(1);
+      opacity: 0.7;
+    }
+  }
+}

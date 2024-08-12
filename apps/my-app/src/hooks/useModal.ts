@@ -1,21 +1,17 @@
-import { useState, useCallback } from "react";
+import { create } from "zustand";
 
-const useModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface modalType {
+  show: boolean;
+  openModal: () => void;
+  closeModal: () => void;
+  toggleModal: () => void;
+};
 
-  const ClickModal = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, [])
-
-  const ClosedModal = useCallback(() => {
-    setIsOpen(false);
-  }, [])
-
-  return {
-    isOpen,
-    ClickModal,
-    ClosedModal
-  }
-}
+const useModal = create<modalType>((set) => ({
+  show: false,
+  openModal: () => set({show: true}),
+  closeModal: () => set({show: false}),
+  toggleModal: () => set((state) => ({ show: !state.show })),
+}));
 
 export default useModal;

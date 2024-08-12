@@ -1,6 +1,12 @@
 import { ReactNode, HTMLAttributeAnchorTarget } from "react";
+import "./Button.scss";
 
 type ButtonProps = {
+  type?: "button" | "submit";
+  onClick: () => void;
+  className?: string;
+  buttonType?: "basic" | "close" | "add" | "back";
+  buttonColor?: string; 
   children: ReactNode;  
   link?: {
     href: string;
@@ -8,10 +14,12 @@ type ButtonProps = {
   };
 }
 
-const Button = ({ link, children }: ButtonProps) => {
+const Button = ({ type="button", link, buttonType="basic", className, onClick, children }: ButtonProps) => {
   return !link ? (
     <button
-      type="button"
+      className={`${buttonType} button ${className ? className : ""}`}
+      type={type}
+      onClick={onClick}
     >
       {children}
     </button>
@@ -19,6 +27,7 @@ const Button = ({ link, children }: ButtonProps) => {
     <a
       href={link?.href}
       target={link?.target ?? "_self"}
+      className="anchor"
     >
       {children}
     </a> 

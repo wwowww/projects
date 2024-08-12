@@ -5,10 +5,11 @@
   height: 100vh;
   
   .inner {
+    position: relative;
     max-width: 400px;
     width: 100%;
     min-height: 400px;
-    max-height: 600px;
+    max-height: 500px;
     height: 100%;
     background-color: rgba(var(--color-Background-RGB));
     backdrop-filter: blur(5px);

@@ -18,10 +18,6 @@
 
     &:checked + label {
       position: relative;
-
-      // &::before {
-      //   background: var(--color-toggle-bg-button);
-      // }
     }
 
     &:checked + label:after {
@@ -62,7 +58,7 @@
       -moz-border-radius: 50%;
       border-radius: 50%;
       position: absolute;
-      top: 6px;
+      top: 5px;
       left: 4px;
       transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
     }

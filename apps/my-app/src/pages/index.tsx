@@ -1,61 +1,41 @@
-import { useState } from "react";
 import "@/app/global.scss";
 import Layout from "@/components/atoms/Layout/Layout";
 import TodoList from "@/components/molecules/TodoList/TodoList";
-import Modal from "@/components/organisms/Modal/Modal";
-import InputBox from "@/components/atoms/Input/Input";
+import InsertModal from "@/components/organisms/Insertmodal/InsertModal";
 import Header from "@/components/molecules/Header/Header";
 import TodoListLayout from "@/components/atoms/TodoListLayout/TodoListLayout";
+import useTodoStore from "@/hooks/todoStore";
+import Empty from "@/components/atoms/Empty/Empty";
+import useModal from "@/hooks/useModal";
+import Button from "@/components/atoms/Button/Button";
 
 const Home = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: "할일1",
-      checked: false,
-    },
-    {
-      id: 2,
-      text: "할일2",
-      checked: false,
-    },
-    {
-      id: 3,
-      text: "할일3",
-      checked: false,
-    },
-  ])
-
-  const onInsertTodo = (text: string) => {
-    if (text === "") {
-      return "할 일을 입력해주세요."
-    } else {
-      const todo = {
-        id: todos.length + 1,
-        text,
-        checked: false
-      }
-      setTodos(todos => todos.concat(todo))
-    }
-  }
-
-  const onCheckToggle = (id: number) => {
-    setTodos(todos => todos.map((todo) => (
-      todo.id === id 
-        ? {...todo, checked: !todo.checked}
-        : todo
-    )))
-  }
+  const {todos, toggleTodo, removeTodo } = useTodoStore();
+  const { show, openModal, toggleModal } = useModal();
 
   return (
     <Layout padding="16px 22px" borderRadius="15px">
       <Header />
-        <TodoListLayout padding="20px 0" gap="10px">
-          <TodoList todos={todos} onCheckToggle={onCheckToggle} />
-        </TodoListLayout>
-      <Modal closeButton={true} modalButton={<div>Button</div>}>
-        <InputBox type="text" placeholder="내용을 입력해주세요." onInsertTodo={onInsertTodo} errorMessage="할 일을 입력해주세요." />
-      </Modal>
+      {(todos.length === 0 && !show) && (
+        <Empty height="calc(100% - 160px)"content="새로운 노트를 만들어보세요!">
+          <Button onClick={openModal} className="scale">새 노트 만들기</Button>
+        </Empty>
+      )}
+      {todos.length !== 0 && !show && (
+        <>
+          <TodoListLayout gap="10px" height="100%" maxHeight="278px">
+            <TodoList 
+              todos={todos}
+              onCheckToggle={toggleTodo}
+              removeOnClick={removeTodo}
+              // updateOnClick={toggleModal}
+            />
+          </TodoListLayout>
+          {/* <Button onClick={openModal}>새 노트</Button> */}
+        </>
+      )}
+      {show && <InsertModal />}
+      {/* <Cat /> */}
     </Layout>
   )
 }
