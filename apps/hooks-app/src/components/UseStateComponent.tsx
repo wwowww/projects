@@ -7,7 +7,7 @@ const heavyWork = () => {
 
 const UseStateComponent = () => {
   // const [names, setNames] = useState(heavyWork()); // 이렇게 하면 무거운 작업이 값 업데이트마다 계속 랜더링됨 -> 비효율적
-  const [names, setNames] = useState(() => heavyWork());
+  const [names, setNames] = useState(() => heavyWork()); // 맨 처음 랜더링 될 때만 실행
   const [input, setInput] = useState("");
 
   const handleInputChange = (e: any) => {
