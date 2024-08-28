@@ -1,10 +1,11 @@
-import UseEffectComponent from "../src/components/UseEffectComponent";
+import UseRefComponent from "../src/components/UseRefComponent";
 
 function App() {
   return (
     <div>
       {/* <UseStateComponent /> */}
-      <UseEffectComponent />
+      {/* <UseEffectComponent /> */}
+      <UseRefComponent />
     </div>
   )
 }
