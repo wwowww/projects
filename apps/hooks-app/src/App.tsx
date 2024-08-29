@@ -1,29 +1,17 @@
-import { useState } from "react";
-import Page from "./components/contextExample/Page";
-import { ThemeContext } from "./context/ThemeContext";
-import { UserContext } from "./context/UserContext";
-
-
+import UseContextComponent from "./components/UseContextComponent";
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-  
   return (
     <div>
       {/* <UseStateComponent /> */}
       {/* <UseEffectComponent /> */}
       {/* <UseRefComponent /> */}
-      <ThemeContext.Provider value={{ isDark, setIsDark }}>
-        <UserContext.Provider value={"사용자"}>
-          <Page />
-        </UserContext.Provider>
-      </ThemeContext.Provider>
+      <UseContextComponent />
     </div>
   )
 }
 
 export default App;
-// function useState(): [any, any] {
-//   throw new Error("Function not implemented.");
-// }
-
+function useState(): [any, any] {
+  throw new Error("Function not implemented.");
+}
