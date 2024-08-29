@@ -5,6 +5,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "dev:my-app": "turbo dev --filter=my-app",
+    "dev:hooks-app": "turbo dev --filter=hooks-app",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
