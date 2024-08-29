@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Page from "./components/contextExample/Page";
 import { ThemeContext } from "./context/ThemeContext";
+import { UserContext } from "./context/UserContext";
 
 
 
@@ -13,7 +14,9 @@ function App() {
       {/* <UseEffectComponent /> */}
       {/* <UseRefComponent /> */}
       <ThemeContext.Provider value={{ isDark, setIsDark }}>
-        <Page />
+        <UserContext.Provider value={"사용자"}>
+          <Page />
+        </UserContext.Provider>
       </ThemeContext.Provider>
     </div>
   )
