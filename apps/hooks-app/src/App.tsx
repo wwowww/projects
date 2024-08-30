@@ -1,5 +1,4 @@
-import UseMemoComponent from "./components/UseMemoComponent";
-import UseMemoComponent2 from "./components/UseMemoComponent2";
+import UseCallbackComponent2 from "./components/UseCallbackComponent2";
 
 function App() {
   return (
@@ -8,8 +7,10 @@ function App() {
       {/* <UseEffectComponent /> */}
       {/* <UseRefComponent /> */}
       {/* <UseContextComponent /> */}
-      <UseMemoComponent />
-      <UseMemoComponent2 />
+      {/* <UseMemoComponent /> */}
+      {/* <UseMemoComponent2 /> */}
+      {/* <UseCallbackComponent /> */}
+      <UseCallbackComponent2 />
     </div>
   )
 }
