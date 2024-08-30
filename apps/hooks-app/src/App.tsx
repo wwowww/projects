@@ -1,4 +1,4 @@
-import UseReducerComponent from "./components/UseReducerComponent";
+import UseReducerComponent2 from "./components/UseReducerComponent2";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       {/* <UseMemoComponent /> */}
       {/* <UseMemoComponent2 /> */}
       {/* <UseCallbackComponent /> */}
-      <UseReducerComponent />
+      <UseReducerComponent2 />
     </div>
   )
 }
