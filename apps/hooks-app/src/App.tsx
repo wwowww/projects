@@ -1,4 +1,5 @@
-import UseContextComponent from "./components/UseContextComponent";
+import UseMemoComponent from "./components/UseMemoComponent";
+import UseMemoComponent2 from "./components/UseMemoComponent2";
 
 function App() {
   return (
@@ -6,7 +7,9 @@ function App() {
       {/* <UseStateComponent /> */}
       {/* <UseEffectComponent /> */}
       {/* <UseRefComponent /> */}
-      <UseContextComponent />
+      {/* <UseContextComponent /> */}
+      <UseMemoComponent />
+      <UseMemoComponent2 />
     </div>
   )
 }
