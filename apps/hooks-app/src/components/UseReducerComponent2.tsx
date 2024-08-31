@@ -54,7 +54,7 @@ const UseReducerComponent = () => {
   return (
     <>
       <h1>출석부</h1>
-      <p>총 학생 수: {initialState.count}</p>
+      <p>총 학생 수: {studentsInfo && studentsInfo.count}</p>
       <input 
         type="text"
         placeholder="이름을 입력해주세요."
