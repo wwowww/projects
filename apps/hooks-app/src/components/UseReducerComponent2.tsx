@@ -5,7 +5,7 @@ import Student from "./Student";
 // dispatch - state 업데이트를 위한 요구
 // action - 요구의 내용
 
-const ACTION_TYPE = {
+export const ACTION_TYPE = {
   add: 'add',
   delete: 'delete',
   mark: 'mark'
@@ -27,12 +27,12 @@ const reducer = (state: any, action: any) => {
     case ACTION_TYPE.delete: 
       return {
         count: state.count - 1,
-        students: state.students.filter(student => student.id !== action.payload.id) 
+        students: state.students.filter((student: any) => student.id !== action.payload.id) 
       }
     case ACTION_TYPE.mark: 
       return {
         count: state.count,
-        students: state.students.map((student) => {
+        students: state.students.map((student: any) => {
           if(student.id === action.payload.id) {
             return {...student, isHere: !student.isHere}
           }
