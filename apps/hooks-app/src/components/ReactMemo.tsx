@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Child from "./Child";
 
 // React.memo
@@ -31,12 +31,16 @@ const ReactMemo = () => {
     }
   }, []);
 
+  const tellMe = useCallback(() => { // 함수도 마찬가지로 useCallback를 사용한다.
+    console.log("응 사랑해🥰")
+  },[]);
+
   return (
     <div style={{border: '2px solid navy', padding: 10}}>
       <h1>👥 부모</h1>
       <p>age: {parentAge}</p>
       <button onClick={incrementParentAge}>부모 나이 증가</button>
-      <Child name={name}  />
+      <Child name={name} tellMe={tellMe} />
     </div>
   )
 }
