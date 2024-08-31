@@ -1,3 +1,5 @@
+import { ACTION_TYPE } from './UseReducerComponent2';
+
 type Props = {
   name: string;
   dispatch: any;
@@ -14,12 +16,12 @@ const Student = ({name, dispatch, id, isHere}: Props) => {
           color: isHere ? 'gray' : 'black'
         }}
         onClick={() => {
-          dispatch({type: 'mark', payload: {id}})
+          dispatch({type: ACTION_TYPE.mark, payload: {id}})
         }}
       >{name}</span>
       <button
         onClick={() => {
-          dispatch({type: 'delete', payload: {id}})
+          dispatch({type: ACTION_TYPE.delete, payload: {id}})
         }}
       >삭제</button>
     </div>

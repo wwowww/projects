@@ -8,11 +8,12 @@ import Student from "./Student";
 const ACTION_TYPE = {
   add: 'add',
   delete: 'delete',
+  mark: 'mark'
 }
 
 const reducer = (state: any, action: any) => {
   switch(action.type) {
-    case "add":
+    case ACTION_TYPE.add:
       const name = action.payload.name;
       const newStudent = {
         id: Date.now(),
@@ -23,12 +24,12 @@ const reducer = (state: any, action: any) => {
         count: state.count + 1,
         students: [...state.students, newStudent]
       }
-    case 'delete': 
+    case ACTION_TYPE.delete: 
       return {
         count: state.count - 1,
         students: state.students.filter(student => student.id !== action.payload.id) 
       }
-    case 'mark': 
+    case ACTION_TYPE.mark: 
       return {
         count: state.count,
         students: state.students.map((student) => {
@@ -62,7 +63,7 @@ const UseReducerComponent = () => {
         onChange={(e) => setName(e.target.value)}
       />
       <button onClick={() => {
-        dispatch({type: 'add', payload: {name}})
+        dispatch({type: ACTION_TYPE.add, payload: {name}})
       }}>추가</button>
       {studentsInfo && studentsInfo.students.map((students: any) => {
         return (
