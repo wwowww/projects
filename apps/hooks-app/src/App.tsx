@@ -1,3 +1,4 @@
+import CustomHook from "./components/CustomHook";
 import ReactMemo from "./components/ReactMemo";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
       {/* <UseMemoComponent /> */}
       {/* <UseMemoComponent2 /> */}
       {/* <UseCallbackComponent /> */}
-      <ReactMemo />
+      {/* <ReactMemo /> */}
+      <CustomHook />
     </div>
   )
 }
