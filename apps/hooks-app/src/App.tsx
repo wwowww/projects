@@ -1,4 +1,4 @@
-import UseDebounceComponent from "./components/UseDebounceComponent";
+import UseThrottleComponent from "./components/UseThrottleComponent";
 
 function App() {
   return (
@@ -14,7 +14,8 @@ function App() {
       {/* <CustomHook /> */}
       {/* <UseIdComponent /> */}
       {/* <UseLayoutEffectComponent2 /> */}
-      <UseDebounceComponent />
+      {/* <UseDebounceComponent /> */}
+      <UseThrottleComponent />
     </div>
   )
 }
