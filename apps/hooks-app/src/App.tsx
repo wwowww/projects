@@ -1,5 +1,4 @@
-import UseIdComponent from "./components/UseIdComponent";
-
+import UseLayoutEffectComponent2 from "./components/UseLayoutEffectComponent2";
 
 function App() {
   return (
@@ -13,7 +12,8 @@ function App() {
       {/* <UseCallbackComponent /> */}
       {/* <ReactMemo /> */}
       {/* <CustomHook /> */}
-      <UseIdComponent />
+      {/* <UseIdComponent /> */}
+      <UseLayoutEffectComponent2 />
     </div>
   )
 }
