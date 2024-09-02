@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 
-type Props = {
-  baseUrl: string,
-  initialType: string
-}
-
-export const useFetch = ({baseUrl, initialType}: Props) => {
-  const [data, setData] = useState(null);
+export const useFetch = <T = any>(baseUrl: T, initialType?: string) => {
+  const [data, setData] = useState<T>(null as T);
 
   const fetchUrl = (type: string) => {
     fetch(baseUrl + '/' + type)
@@ -15,10 +10,8 @@ export const useFetch = ({baseUrl, initialType}: Props) => {
   }
 
   useEffect(() => {
-    fetchUrl(initialType)
+    fetchUrl(initialType ? initialType : "")
   }, []);
-
-  console.log(data)
 
   return {
     data,
