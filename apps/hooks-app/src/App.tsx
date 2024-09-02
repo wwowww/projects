@@ -1,4 +1,5 @@
-import CustomHook from "./components/CustomHook";
+import UseIdComponent from "./components/UseIdComponent";
+
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       {/* <UseMemoComponent2 /> */}
       {/* <UseCallbackComponent /> */}
       {/* <ReactMemo /> */}
-      <CustomHook />
+      {/* <CustomHook /> */}
+      <UseIdComponent />
     </div>
   )
 }
