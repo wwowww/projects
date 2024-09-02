@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import "./UseDebounceComponent.scss";
+import { useDebounce } from "../hooks/useDebounce";
 
 const users = [
   { name: "김철수", age: "16" },
@@ -28,18 +29,10 @@ const fetchDataFromServer = (value: any) => {
 
 const UseDebounceComponent = () => {
   const [input, setInput] = useState<string>();
-  const [debouncedInput, setDebouncedInput] = useState(input);
+  const debouncedInput = useDebounce(input, 300);
   const [result, setResult] = useState<any>([]);
 
-  useEffect(() => {
-    const timerID = setTimeout(() => {
-      setDebouncedInput(input);
-    }, 1000)
-
-    return () => {
-      clearTimeout(timerID);
-    }
-  }, [input])
+  
 
   useEffect(() => {
     const users = fetchDataFromServer(debouncedInput);
@@ -49,7 +42,7 @@ const UseDebounceComponent = () => {
   return (
     <div className="container">
       <div className="search-container">
-        <input type="text" placeholder="여기에 검색하세요." value={input} onChange={(e) => setInput(e.target.value)} />
+        <input type="text" placeholder="여기에 검색하세요." value={input || ""} onChange={(e) => setInput(e.target.value)} />
         <ul>
           {result.map((user: any, index: number) => (
             <li key={`${user}-${index}`}>
