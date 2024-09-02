@@ -1,4 +1,4 @@
-import UseLayoutEffectComponent2 from "./components/UseLayoutEffectComponent2";
+import UseDebounceComponent from "./components/UseDebounceComponent";
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
       {/* <ReactMemo /> */}
       {/* <CustomHook /> */}
       {/* <UseIdComponent /> */}
-      <UseLayoutEffectComponent2 />
+      {/* <UseLayoutEffectComponent2 /> */}
+      <UseDebounceComponent />
     </div>
   )
 }
