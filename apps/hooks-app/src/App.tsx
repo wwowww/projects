@@ -1,5 +1,4 @@
 import CustomHook from "./components/CustomHook";
-import ReactMemo from "./components/ReactMemo";
 
 function App() {
   return (
