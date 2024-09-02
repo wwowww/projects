@@ -1,7 +1,8 @@
 // 쓰로틀링: 함수가 한 번 호출되면, 일정 시간이 지나기 전에 다시 호출되지 않도록 막는 것
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./UseThrottleComponent.scss";
+import { useThrottle } from "../hooks/useThrottle";
 
 const hackLottoNumbers = () => {
   console.log("로또 번호 열심히 추측하는 중!");
@@ -19,17 +20,10 @@ const hackLottoNumbers = () => {
 const UseThrottleComponent = () => {
   const [lottoNumbers, setLottoNumbers] = useState([0, 0, 0, 0, 0, 0]);
 
-  const lastRun = useRef(Date.now());
-  
-  const handleClick = () => {
-    const timeElapsed = Date.now() - lastRun.current;
-
-    if (timeElapsed >= 1000) {
-      const result = hackLottoNumbers();
-      setLottoNumbers(result);
-      lastRun.current = Date.now();
-    }
-  }
+  const handleClick = useThrottle(() => {
+    const result = hackLottoNumbers();
+    setLottoNumbers(result);
+  }, 1000);
 
   return (
     <div className="container">
