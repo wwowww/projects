@@ -7,14 +7,19 @@ import { useThrottle } from "../hooks/useThrottle";
 const hackLottoNumbers = () => {
   console.log("로또 번호 열심히 추측하는 중!");
 
-  const lottoNumbers = [];
+  const lottoNumbers: any[] = [];
   for(let i = 0; i < 6; i++) {
     const number = Math.floor(Math.random() * 45) + 1;
-    
-    lottoNumbers.push(number);
+    if (!lottoNumbers.find((e) => (e === number))) {
+      lottoNumbers.push(number);
+    } else {
+      i--;
+    }
   }
 
-  return lottoNumbers.sort();
+  lottoNumbers.sort((a, b) => a - b);
+
+  return lottoNumbers;
 }
 
 const UseThrottleComponent = () => {
