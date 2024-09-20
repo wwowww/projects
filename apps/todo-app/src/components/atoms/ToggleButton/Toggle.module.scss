@@ -1,0 +1,96 @@
+.toggle {
+  position: relative;
+
+  .toggleWrap {
+    display: flex;
+    z-index: 1;
+    position: relative;
+  }
+  
+  input {
+    display: block;
+
+    &[type="checkbox"] {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+
+    &:checked + label {
+      position: relative;
+    }
+
+    &:checked + label:after {
+      left: calc(100% - 5px);
+      transform: translateX(-100%);
+    }
+  }  
+
+  label {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 55px;
+    height: 30px;
+
+    // &::before {
+    //   display: block;
+    //   content: "";
+    //   position: absolute;
+    //   z-index: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   border-radius: 100px;
+    //   background: var(--color-toggle-bg-button);
+    // }
+
+    &::after {
+      display: block;
+      content: "";
+      background: var(--color-toggle-button);
+      width: 20px;
+      height: 20px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 4px;
+      transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+    }
+  }
+
+  .emoji {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 54px;
+    height: 28px;
+    border-radius: 20px;
+    background: var(--color-toggle-bg-button);
+    // padding: 10px;
+
+    span {
+      transition: 0.2s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+    }
+  }
+
+  input {
+    &:not(:checked) ~ .emoji .emojiSun {
+      opacity: 0;
+    }
+    &:checked ~ .emoji .emojiMoon {
+      opacity: 0;
+    }
+  }
+}
