@@ -5,8 +5,7 @@ type ButtonProps = {
   type?: "button" | "submit";
   onClick: () => void;
   className?: string;
-  buttonType?: "basic" | "close" | "add" | "back";
-  buttonColor?: string; 
+  buttonType?: "basic" | "close" | "add" | "back" | "edit"  | "delete";
   children: ReactNode;  
   link?: {
     href: string;

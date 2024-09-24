@@ -13,6 +13,21 @@
     background-color: var(--color-button);
   }
 
+  &.edit {
+    background-color: var(--color-list-button);
+    &:hover {
+      background-color: var(--color-button);
+    }
+  }
+
+  &.delete {
+    background-color: var(--color-list-button);
+
+    &:hover {
+      background-color: #ff6056;
+    }
+  }
+
   &.back {
     background-color: #7d7d7d;
   }
