@@ -1,0 +1,20 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .inner {
+    padding: 16px 22px;
+    border-radius: 15px;
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    min-height: 400px;
+    max-height: 500px;
+    height: 100%;
+    background-color: rgba(var(--color-Background-RGB));
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease-in;
+  }
+}
