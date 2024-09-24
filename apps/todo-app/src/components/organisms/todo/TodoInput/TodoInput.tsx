@@ -29,6 +29,7 @@ const Input = ({addTodo, placeholder, errorMessage, ref}: Props) => {
   },[addTodo, input]);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback((e) => {
+    if (e.keyCode === 229) return;
     if (e.key === 'Enter') handleAddTodo();
   },[handleAddTodo, addTodo, input]);
 
