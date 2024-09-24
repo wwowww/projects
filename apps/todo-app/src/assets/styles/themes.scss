@@ -12,6 +12,8 @@
   --color-button: #{$btn-color-1};
   --color-toggle-button: #{$btn-toggle-color-1};
   --color-toggle-bg-button: #{$bg-color-1};
+  --color-list-background: #{$list-background-1};
+  --color-list-button: #{$list-button-1};
 }
 
 @mixin dark-color {
@@ -22,7 +24,8 @@
   --color-button: #{$btn-color-2};
   --color-toggle-button: #{$bg-color-1};
   --color-toggle-bg-button: #{$btn-toggle-color-2};
-  
+  --color-list-background: #{$list-background-2};
+  --color-list-button: #{$list-button-2};
 }
 
 :root {
