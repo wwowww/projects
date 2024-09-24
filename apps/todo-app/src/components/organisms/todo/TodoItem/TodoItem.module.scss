@@ -1,0 +1,58 @@
+@use "../../../../assets/styles/_mixin.scss" as *;
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+
+  .note {
+    @include ellipsis;
+    max-width: 200px;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .checkboxButton {
+    border: 1px solid var(--color-Background-RGB);
+    background-color: #fff !important;
+    text-indent: -9999px;
+    color: transparent;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &.done {
+      position: relative;
+      width: 16px;
+      height: 16px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 26%;
+        height: 56%;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-70%) rotateZ(40deg);
+        border-right: 1.7px solid var(--color-button);
+        border-bottom: 1.7px solid var(--color-button);
+      }
+    }
+  }
+
+  .underline {
+    text-decoration:line-through;
+    opacity: 0.4;
+  }
+}
+
+.buttonWrap {
+  display: flex;
+  gap: 6px;
+}

@@ -1,0 +1,19 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 42px;
+  
+  input {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 15px;
+  }
+
+  button {
+    width: 43.6px;
+  }
+}
