@@ -176,6 +176,9 @@ importers:
       vite-tsconfig-paths:
         specifier: ^5.0.1
         version: 5.0.1(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.2)(sass@1.77.8)(terser@5.31.1))
+      zustand:
+        specifier: ^4.5.4
+        version: 4.5.4(@types/react@18.3.4)(immer@10.1.1)(react@18.3.1)
     devDependencies:
       '@eslint/js':
         specifier: ^9.9.0
@@ -8680,3 +8683,11 @@ snapshots:
       '@types/react': 18.2.61
       immer: 10.1.1
       react: 18.2.0
+
+  zustand@4.5.4(@types/react@18.3.4)(immer@10.1.1)(react@18.3.1):
+    dependencies:
+      use-sync-external-store: 1.2.0(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.4
+      immer: 10.1.1
+      react: 18.3.1
