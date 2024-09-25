@@ -1,5 +1,6 @@
 import ContextTodoPage from '@/pages/ContextTodoPage';
 import ReduxTodoPage from '@/pages/ReduxTodoPage';
+import JotaiTodoPage from '@/pages/JotaiTodoPage';
 
 export const PATH_INFO = [
   {
@@ -11,5 +12,10 @@ export const PATH_INFO = [
     name: "redux",
     path: "/redux",
     element: ReduxTodoPage,
+  },
+  {
+    name: "jotai",
+    path: "/jotai",
+    element: JotaiTodoPage,
   },
 ];
