@@ -1,12 +1,17 @@
 {
-  "files": [],
   "compilerOptions": {
+    "typeRoots" : ["./@types", "./node_modules/@types"],
+    "jsx": "preserve",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["src/*"],
+    },
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "esnext",
+    // "module": "ESNext", 
+    // "moduleResolution": "bundler" 
   },
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "vite.config.ts"],
+  "exclude": ["node_modules"],
 }
