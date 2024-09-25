@@ -2,6 +2,7 @@ import ContextTodoPage from '@/pages/ContextTodoPage';
 import ReduxTodoPage from '@/pages/ReduxTodoPage';
 import JotaiTodoPage from '@/pages/JotaiTodoPage';
 import RecoilTodoPage from '@/pages/RecoilTodoPage';
+import ZustandTodoPage from '@/pages/ZustandTodoPage';
 
 export const PATH_INFO = [
   {
@@ -24,4 +25,9 @@ export const PATH_INFO = [
     path: "/recoil",
     element: RecoilTodoPage,
   },
+  {
+    name: "zustand",
+    path: "/zustand",
+    element: ZustandTodoPage,
+  }
 ];
