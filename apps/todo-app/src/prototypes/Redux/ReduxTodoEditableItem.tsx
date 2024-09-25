@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useReduxTodoMutations } from "./useReduxTodo";
-import TodoItem from "../../components/organisms/todo/TodoItem/TodoItem";
-import TodoEditItem from "../../components/organisms/todo/TodoEditItem/TodoEditItem";
+import TodoItem from "@/components/organisms/todo/TodoItem/TodoItem";
+import TodoEditItem from "@/components/organisms/todo/TodoEditItem/TodoEditItem";
 
 const ReduxTodoEditableItem = (props: { todo: Todo }) => {
   const { todo } = props;

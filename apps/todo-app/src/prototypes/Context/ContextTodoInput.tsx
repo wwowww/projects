@@ -1,5 +1,5 @@
 
-import TodoInput from '../../components/organisms/todo/TodoInput/TodoInput';
+import TodoInput from '@/components/organisms/todo/TodoInput/TodoInput';
 import { useContextTodoMutations } from './useContextTodo';
 
 const ContextTodoInput = () => {

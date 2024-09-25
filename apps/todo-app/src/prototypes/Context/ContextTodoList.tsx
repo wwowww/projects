@@ -1,4 +1,4 @@
-import TodoList from "../../components/organisms/todo/TodoList/TodoList";
+import TodoList from "@/components/organisms/todo/TodoList/TodoList";
 import { useContextTodo } from "./useContextTodo";
 
 import { memo } from "react";

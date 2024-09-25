@@ -1,10 +1,10 @@
 import { ChangeEvent, KeyboardEventHandler, useCallback, useState } from 'react';
 import { v4 } from "uuid";
-import Button from '../../../atoms/Button/Button';
+import Button from '@/components/atoms/Button/Button';
 import style from "./TodoInput.module.scss"
-import Typography from '../../../atoms/Typography/Typography';
+import Typography from '@/components/atoms/Typography/Typography';
 
-type Props = {
+export type Props = {
   addTodo: (todo: Todo) => void;
   placeholder?: string;
   errorMessage?: string;

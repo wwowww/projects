@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import Button from "../../../atoms/Button/Button";
+import Button from "@/components/atoms/Button/Button";
 import style from "./TodoItem.module.scss";
 
 export type TodoItemProps = {

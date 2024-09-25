@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { useAppDispatch } from "../../store";
-import { add, remove, update } from "../../store/slices/todoSlice";
+import { useAppDispatch } from "@/store";
+import { add, remove, update } from "@/store/slices/todoSlice";
 
 export const useReduxTodoMutations = () => {
   const dispatch = useAppDispatch();

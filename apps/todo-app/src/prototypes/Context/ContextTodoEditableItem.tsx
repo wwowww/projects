@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useContextTodoMutations } from "./useContextTodo";
-import TodoEditItem from "../../components/organisms/todo/TodoEditItem/TodoEditItem";
-import TodoItem from "../../components/organisms/todo/TodoItem/TodoItem";
+import TodoEditItem from "@/components/organisms/todo/TodoEditItem/TodoEditItem";
+import TodoItem from "@/components/organisms/todo/TodoItem/TodoItem";
 
 const ContextTodoEditableItem = (props: { todo: Todo }) => {
   const { todo } = props;

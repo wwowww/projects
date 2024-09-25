@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEventHandler, useCallback, useEffect, useRef, useState } from 'react';
-import Button from '../../../atoms/Button/Button';
+import Button from '@/components/atoms/Button/Button';
 import style from "./TodoEditItem.module.scss";
 
 export type TodoEditItemProps = {
