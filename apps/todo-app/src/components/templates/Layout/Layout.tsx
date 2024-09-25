@@ -1,22 +1,20 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import ContextTodoPage from '../../../pages/ContextTodoPage';
+import { Routes, Route } from 'react-router-dom';
+import Header from '@/components/molecules/Header/Header';
+import { PATH_INFO } from "@/mocks/pathInfo";
 import style from "./Layout.module.scss";
-import Header from '../../../components/molecules/Header/Header';
 
 const Layout = () => {
-  const location = useLocation();
-  const this_pathName = location.pathname;
-
   return (
     <div className={style.wrap}>
       <div className={style.inner}>
         <Header />
         <Routes>
-          <Route path='/' element={<ContextTodoPage />}></Route>
+          {PATH_INFO.map((info, index) => (
+            <Route path={info.path} element={<info.element />} key={index+"key"} />
+          ))}
         </Routes>
       </div>
     </div>
-    
   )
 }
 

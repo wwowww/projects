@@ -1,6 +1,7 @@
 import Toggle from "@/components/atoms/ToggleButton/Toggle";
 import TrafficLight from "@/components/molecules/TrafficLight/TrafficLight";
 import Typography from "@/components/atoms/Typography/Typography";
+import Menu from "@/components/molecules/Menu/Menu";
 import style from "./Header.module.scss";
 
 const Header = () => {
@@ -8,7 +9,10 @@ const Header = () => {
     <header className={style.header}>
       <div className={style.top}>
         <TrafficLight />
-        <Toggle />
+        <div className={style.buttonWrap}>
+          <Menu />
+          <Toggle />
+        </div>
       </div>
       <div className={style.title}>
         <Typography Tag="h1" className="title-32-140-700">심플 노트</Typography>
