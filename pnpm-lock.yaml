@@ -149,6 +149,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^2.2.7
         version: 2.2.7(react-redux@9.1.2(@types/react@18.3.4)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
+      jotai:
+        specifier: ^2.10.0
+        version: 2.10.0(@types/react@18.3.4)(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -2621,6 +2624,18 @@ packages:
 
   jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
+
+  jotai@2.10.0:
+    resolution: {integrity: sha512-8W4u0aRlOIwGlLQ0sqfl/c6+eExl5D8lZgAUolirZLktyaj4WnxO/8a0HEPmtriQAB6X5LMhXzZVmw02X0P0qQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -7003,6 +7018,11 @@ snapshots:
   jiti@1.21.6: {}
 
   jju@1.4.0: {}
+
+  jotai@2.10.0(@types/react@18.3.4)(react@18.3.1):
+    optionalDependencies:
+      '@types/react': 18.3.4
+      react: 18.3.1
 
   js-tokens@4.0.0: {}
 
