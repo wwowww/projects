@@ -1,17 +1,24 @@
 import { useCallback } from 'react';
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
+import { recoilPersist } from 'recoil-persist';
 
-const todoListState = atom<Todo[]>({
-  key: 'todoList',
+const { persistAtom } = recoilPersist({
+  key: 'recoilTodos', 
+  storage: localStorage,
+});
+
+export const todoState = atom<Todo[]>({
+  key: 'todo', 
   default: [],
+  effects_UNSTABLE: [persistAtom], // 필수
 });
 
 export const useRecoilTodoValue = () => {
-  return useRecoilValue(todoListState);
+  return useRecoilValue(todoState);
 };
 
 export const useRecoilTodoMutations = () => {
-  const setTodos = useSetRecoilState(todoListState);
+  const setTodos = useSetRecoilState(todoState);
 
   const addTodo = useCallback((todo: Todo) => {
     setTodos((prev) => [...prev, todo])
