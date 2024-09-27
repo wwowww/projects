@@ -16,7 +16,6 @@ const ReduxTodoEditableItem = (props: { todo: Todo }) => {
     return <TodoEditItem todo={todo} updateTodo={updateTodo} />;
   }
 
-
   return (
     <TodoItem
       todo={todo}
