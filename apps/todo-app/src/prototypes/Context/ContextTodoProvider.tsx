@@ -1,5 +1,6 @@
-import { PropsWithChildren, useReducer } from 'react';
+import { PropsWithChildren, useEffect, useReducer } from 'react';
 import { TodoContext, TodoContextActions, TodoDispatchContext } from './useContextTodo';
+import { useLocalStorageReducer } from "@/hooks/useLocalStorageReducer";
 
 const todoReducer = (todos: Todo[], action: TodoContextActions) => {
   switch (action.type) {
@@ -25,8 +26,12 @@ const todoReducer = (todos: Todo[], action: TodoContextActions) => {
 const initialTodos: Todo[] = [];
 
 const ContextTodoProvider = ({ children }: PropsWithChildren) => {
-  const [todos, dispatch] = useReducer(todoReducer, initialTodos);
+  const [todos, dispatch] = useLocalStorageReducer('todos', initialTodos, todoReducer);
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos, 'todos']);
+  
   return (
     <TodoContext.Provider value={todos}>
       <TodoDispatchContext.Provider value={dispatch}>
