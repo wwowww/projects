@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 type States = {
   todos: Todo[];
@@ -10,9 +11,11 @@ type Actions = {
   removeTodo: (id: string) => void;
 };
 
-const useZustandTodo = create<States & Actions>((set) => ({
+const useZustandTodo = create(persist<States & Actions>((set) => ({
   todos: [],
-  addTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
+  addTodo: (todo) => {
+    set((state) => ({ todos: [...state.todos, todo], }));
+  },
   updateTodo: (todo) =>
     set((state) => {
       return {
@@ -23,6 +26,13 @@ const useZustandTodo = create<States & Actions>((set) => ({
     }),
   removeTodo: (id) =>
     set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
-}));
+  }),
+  {
+    name: 'zustandTodoStore',
+    getStorage: () => {
+      return localStorage;
+    },
+  },
+));
 
 export default useZustandTodo;
