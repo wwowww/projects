@@ -1,8 +1,12 @@
-import { ChangeEvent, KeyboardEventHandler, useCallback, useState } from 'react';
+import { ChangeEvent, KeyboardEventHandler, useCallback, useEffect, useState } from 'react';
 import { v4 } from "uuid";
 import Button from '@/components/atoms/Button/Button';
-import style from "./TodoInput.module.scss"
 import Typography from '@/components/atoms/Typography/Typography';
+import useSpeechToText from '@/hooks/useSpeechToText';
+import style from "./TodoInput.module.scss"
+
+import MicrophoneIcon from "@/assets/images/icon/svg/microphone.svg?react";
+import MicrophoneSlashIcon from "@/assets/images/icon/svg/microphone-slash.svg?react";
 
 export type Props = {
   addTodo: (todo: Todo) => void;
@@ -14,19 +18,25 @@ export type Props = {
 const Input = ({addTodo, placeholder, errorMessage, ref}: Props) => {
   const [input, setInput] = useState<string>('');
   const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
+  const { transcript, listening, toggleListening, resetTranscript } = useSpeechToText();
 
   const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
     e && setShowErrorMessage(false);
-  }, []);
+  }, [transcript]);
 
   const handleAddTodo = useCallback(() => {
     if (!input) return setShowErrorMessage(true);
     
     addTodo({ id: v4(), title: input, isDone: false });
     setInput('');
+    resetTranscript();
     setShowErrorMessage(false);
   },[addTodo, input]);
+
+  useEffect(() => {
+    if (transcript) setInput(transcript);
+  }, [transcript]);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback((e) => {
     if (e.keyCode === 229) return;
@@ -36,17 +46,28 @@ const Input = ({addTodo, placeholder, errorMessage, ref}: Props) => {
   return (
     <div className={style.todoInput}>
       <div className={style.wrap}>
-        <input
-          ref={ref}
-          value={input}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          className={style.input}
-          placeholder={placeholder ?? "할 일을 입력해 주세요."}
-        />
+        <div className={style.flex}>
+          <Button onClick={toggleListening} className={style.buttonIcon}>
+            {
+            listening
+              ? <MicrophoneSlashIcon className={style.microphoneSlash} />
+              : <MicrophoneIcon className={style.microphone} />
+            }
+          </Button>
+          <input
+            ref={ref}
+            value={input}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            className={style.input}
+            placeholder={placeholder ?? "할 일을 입력해 주세요."}
+          />
+        </div>
         <Button type="button" onClick={handleAddTodo} className={style.button}>
           추가
         </Button>
+        
+
       </div>
       {showErrorMessage && (
         <Typography className="label-12-100-600" color="#FF5834">
