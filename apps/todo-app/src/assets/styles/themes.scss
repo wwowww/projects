@@ -17,6 +17,7 @@
   --color-background-box-shadow: #{$background-box-shadow-1};
   --color-menu-button: #{$menu-button-1};
   --color-button-arrow: #{$button-arrow-1};
+  --color-microphone-slash: #{$microphone-slosh-1};
 }
 
 @mixin dark-color {
@@ -32,6 +33,7 @@
   --color-background-box-shadow: #{$background-box-shadow-2};
   --color-menu-button: #{$menu-button-2};
   --color-button-arrow: #{$button-arrow-2};
+  --color-microphone-slash: #{$microphone-slosh-2};
 }
 
 :root {
