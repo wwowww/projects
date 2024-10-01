@@ -36,7 +36,9 @@ const Input = ({addTodo, placeholder, errorMessage, ref}: Props) => {
 
   useEffect(() => {
     if (transcript) setInput(transcript);
-  }, [transcript]);
+
+    console.log(listening, "listening")
+  }, [transcript, listening]);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback((e) => {
     if (e.keyCode === 229) return;
@@ -66,13 +68,16 @@ const Input = ({addTodo, placeholder, errorMessage, ref}: Props) => {
         <Button type="button" onClick={handleAddTodo} className={style.button}>
           추가
         </Button>
-        
-
       </div>
       {showErrorMessage && (
         <Typography className="label-12-100-600" color="#FF5834">
           {errorMessage ?? "할 일을 입력해주세요."}
         </Typography>
+      )}
+      {listening && (
+        <Typography className="label-12-100-600" Tag="p" color="#7c7c7c">
+          당신의 목소리를 듣고 있습니다... 마이크 버튼을 눌러 종료해주세요.
+       </Typography>
       )}
     </div>
   )
