@@ -10,7 +10,7 @@ export type TodoContextActions =
   payload: string;
 };
 
-export const TodoContext = createContext<Todo[] | null | {}>(null);
+export const TodoContext = createContext<Todo[] | null | any>(null);
 export const TodoDispatchContext = createContext<Dispatch<TodoContextActions> | null | any>(null);
 
 export const useContextTodo = () => {
