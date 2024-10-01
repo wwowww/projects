@@ -2,7 +2,7 @@ import { FC } from "react";
 import style from "./TodoList.module.scss";
 
 const TodoList = (props: {
-  todos: Todo[];
+  todos: Todo[] | any;
   ItemElement: FC<{ todo: Todo }>;
 }) => {
   const { todos, ItemElement } = props;
