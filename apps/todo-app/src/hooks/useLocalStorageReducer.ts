@@ -5,7 +5,7 @@ export const useLocalStorageReducer = (key, defaultValue, todoReducer) => {
     let value;
     
     try {
-      value = JSON.parse(localStorage.getItem(key)) || [];
+      value = JSON.parse(localStorage.getItem(key) as string) || [];
     } catch (error) {
       value = defaultValue;
     }
