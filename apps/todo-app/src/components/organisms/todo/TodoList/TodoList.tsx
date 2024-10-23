@@ -15,7 +15,7 @@ const TodoList = (props: {
       })}
     </ul>
     ) : (
-      <></>
+      ""
     )
   )
 }
