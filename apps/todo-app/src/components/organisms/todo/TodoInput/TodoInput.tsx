@@ -37,7 +37,6 @@ const Input = ({addTodo, placeholder, errorMessage, ref}: Props) => {
   useEffect(() => {
     if (transcript) setInput(transcript);
 
-    console.log(listening, "listening")
   }, [transcript, listening]);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback((e) => {
