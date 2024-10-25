@@ -8,6 +8,7 @@
     "dev:hooks-app": "turbo dev --filter=hooks-app",
     "dev:chat-app": "turbo dev --filter=chat-app",
     "dev:todo-app": "turbo dev --filter=todo-app",
+    "dev:chat-gpt-clone-app": "turbo dev --filter=chatgpt-clone-app",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
