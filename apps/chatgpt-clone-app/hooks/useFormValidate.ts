@@ -20,8 +20,6 @@ export const useFormValidate = <T>(schema: ZodObject<ZodRawShape>) => {
         ...parseValue.error.flatten().fieldErrors
       })
     }
-
-    console.log(parseValue, "parseValue")
   }
 
   return { errors, validateField }
