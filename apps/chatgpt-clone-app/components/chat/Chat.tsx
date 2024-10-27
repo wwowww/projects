@@ -1,37 +1,34 @@
 "use client";
 
-import { message } from "@/db/schema";
 import Empty from "./Empty";
 import Message from "./Message";
 import AutoResizingTextarea from "./AutoResizingTextarea";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { Button } from "../ui/button";
 import { ArrowUp } from "lucide-react";
 import { useEffect } from "react";
-
-const MESSAGE_DUMMY = [
-  {id: "1", content: "더미데이터1", role: "user"},
-  {id: "2", content: "더미데이터2", role: "assistant"},
-]
+import { useChat } from "ai/react";
+import { useModelStore } from "@/store/model";
 
 const Chat = () => {
-  const [value, setValue] = useState<string>("");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const model = useModelStore((state) => state.model);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [])
+  }, [messages]);
 
   return (
     <div className="flex flex-col w-[80%] h-full mx-auto">
       <div className="flex-1">
-        {MESSAGE_DUMMY.length === 0 ? (
+        {messages.length === 0 ? (
           <Empty />
         ) : (
         <>
-          {MESSAGE_DUMMY.map((message) => (
+          {messages.map((message) => (
             <Message
               key={message.id}
               name={"user"}
@@ -43,10 +40,13 @@ const Chat = () => {
       )}
       </div>
       <div className="pb-5 sticky bottom-0 bg-white">
-        <form className="flex justify-center gap-4 items-end">
+        <form
+          className="flex justify-center gap-4 items-end"
+          onSubmit={(e) => handleSubmit(e, { data: { model } })}
+        >
           <AutoResizingTextarea
-            value={value}
-            onChange={e => setValue(e.target.value)}
+            value={input}
+            onChange={handleInputChange}
           />
           <Button type="submit" size="icon">
             <ArrowUp />
