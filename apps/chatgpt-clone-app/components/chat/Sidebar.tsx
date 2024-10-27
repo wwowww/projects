@@ -3,7 +3,7 @@ import { MessageSquare, Plus } from "lucide-react";
 import { BASE_URL, CHAT_ROUTES } from "@/constants/routes";
 import Logo from "./Logo";
 import SidebarItem from "./SidebarItem";
-// import { LogoutButton } from "./LogoutButton";
+import LogoutButton from "./LogoutButton";
 
 const DUMMY_ITEMS = [
   {
@@ -39,7 +39,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        {/* <LogoutButton /> */}
+        <LogoutButton />
       </div>
     </nav>
   )
