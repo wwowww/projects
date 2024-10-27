@@ -11,6 +11,7 @@ import {
 import { Ellipsis, Pencil, Trash } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useSheetStore } from "@/store/sheet";
 
 type SidebarItemProps = {
   item: {
@@ -25,6 +26,7 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
   const { id, href, icon, label } = item;
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const setOpen = useSheetStore((state) => state.setOpen);
 
   const handleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -32,6 +34,7 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
 
   return (
     <Link
+      scroll={false}
       href={href}
       className={cn(
         "flex items-center justify-between text-sm p-3 group hover:text-white hover:bg-white/10 rounded-lg",
@@ -40,6 +43,7 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
           ? "text-white bg-white/10"
           : "text-zinc-400"
       )}
+      onClick={() => setOpen(false)}
     >
       <div className="flex items-center gap-2">
         {icon} <div className="w-[180px] truncate">{label}</div>

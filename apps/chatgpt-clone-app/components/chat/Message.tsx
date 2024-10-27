@@ -14,7 +14,7 @@ const Message = ({ name="User", content="", role }: MessageProps) => {
   return (
     <div className="flex items-start gap-2 mb-5">
       <Avatar 
-        className={cn("flex items-center justify-center p-1 h-8 w-8 min-w-8 rounded-full",
+        className={cn("flex items-center justify-center mt-1.5 p-1 h-8 w-8 min-w-8 rounded-full",
         isAssistant ? "border border-black" : "bg-slate-200"
       )}>
         <AvatarImage src={isAssistant ? "/logo.svg" : ""} alt="avatar" />
