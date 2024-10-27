@@ -23,6 +23,12 @@ const SignUpForm = () => {
     validateField(name, value)
   }
 
+  useEffect(() => {
+    if (error?.errorMessage) {
+      toast.error(error.errorMessage)
+    }
+  }, [error]);
+
   return (
     <FormCard
       title="회원가입"
