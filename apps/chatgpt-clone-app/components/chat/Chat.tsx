@@ -9,10 +9,28 @@ import { ArrowUp } from "lucide-react";
 import { useEffect } from "react";
 import { useChat } from "ai/react";
 import { useModelStore } from "@/store/model";
+import { useParams, useRouter } from "next/navigation";
+import { createConversation, addMessages } from "@/actions/conversation";
+import { CHAT_ROUTES } from "@/constants/routes";
 
 const Chat = () => {
+  const params = useParams<{conversationId: string}>();
+  const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    onFinish: async(message) => {
+      // param -> conversationId가 없으면 새로운 대화 페이지
+      if (!params.conversationId) {
+        // 1. create conversation
+        const conversation = await createConversation(input);
+        // 2. add message
+        await addMessages(conversation.id, input, message.content);
+
+        router.push(`${CHAT_ROUTES.CONVERSATIONS}/${conversation.id}`);
+      }
+      // param -> conversationId가 있으면 기존 대화 페이지
+    }
+  });
   const model = useModelStore((state) => state.model);
 
   useEffect(() => {
