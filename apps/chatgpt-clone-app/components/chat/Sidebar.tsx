@@ -14,7 +14,7 @@ const NEW_SIDEBAR_ITEM = {
 
 const Sidebar = async () => {
   const conversations = await getConversationsByUser();
-
+  
   const formattedItems = [
     NEW_SIDEBAR_ITEM,
     ...conversations.map((conversation) => ({

@@ -7,13 +7,17 @@ import { useRef } from "react";
 import { Button } from "../ui/button";
 import { ArrowUp } from "lucide-react";
 import { useEffect } from "react";
-import { useChat } from "ai/react";
+import { useChat, Message as TMessage } from "ai/react";
 import { useModelStore } from "@/store/model";
 import { useParams, useRouter } from "next/navigation";
 import { createConversation, addMessages } from "@/actions/conversation";
 import { CHAT_ROUTES } from "@/constants/routes";
 
-const Chat = () => {
+type ChatProps = {
+  initialMessages?: TMessage[];
+}
+
+const Chat = ({ initialMessages }: ChatProps) => {
   const params = useParams<{conversationId: string}>();
   const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -27,8 +31,12 @@ const Chat = () => {
         await addMessages(conversation.id, input, message.content);
 
         router.push(`${CHAT_ROUTES.CONVERSATIONS}/${conversation.id}`);
+      } else {
+        // param -> conversationId가 있으면 기존 대화 페이지
+        // 1. add messages
+        await addMessages(params.conversationId, input, message.content);
+        
       }
-      // param -> conversationId가 있으면 기존 대화 페이지
     }
   });
   const model = useModelStore((state) => state.model);

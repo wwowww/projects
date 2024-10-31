@@ -19,9 +19,8 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
   }
 }
 
-export const getConversationsByUser = async() => {
+export const getConversationsByUser = async () => {
   const session = await verifySession();
-
   const response = await db.query.user.findFirst({
     where: eq(user.id, session.id),
     with: {
@@ -29,7 +28,7 @@ export const getConversationsByUser = async() => {
         orderBy: (conversation, { desc }) => [desc(conversation.updatedAt)],
       },
     },
-  })
+  });
 
   return response?.conversations || [];
 }

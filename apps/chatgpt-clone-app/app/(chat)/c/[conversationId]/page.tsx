@@ -1,6 +1,12 @@
 import Chat from "@/components/chat/Chat";
 
-const ConversationPage = () => {
+type PageProps = {
+  params: {
+    conversationId: string;
+  }
+}
+
+const ConversationPage = ({ params: { conversationId } }: PageProps) => {
   return <Chat />
 }
 
