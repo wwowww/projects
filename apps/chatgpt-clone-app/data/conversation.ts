@@ -6,7 +6,9 @@ export const getMessagesByConversation = async (id: string) => {
   const response = await db.query.conversation.findFirst({
     where: eq(conversation.id, id),
     with: {
-      message: true,
+      message: {
+        orderBy: (conversation, { desc }) => [desc(conversation.updatedAt)],
+      },
     },
   });
   return (response?.message || []) as Message[];
