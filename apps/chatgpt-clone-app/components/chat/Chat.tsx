@@ -51,7 +51,7 @@ const Chat = ({ initialMessages }: ChatProps) => {
     if (initialMessages) {
       setMessages(initialMessages);
     }
-  }, []);
+  }, [initialMessages, setMessages]);
 
   return (
     <div className="flex flex-col w-[80%] h-full mx-auto">
