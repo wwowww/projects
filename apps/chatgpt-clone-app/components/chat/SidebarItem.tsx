@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode, useState, MouseEvent, ChangeEvent } from "react";
+import { ReactNode, useState, MouseEvent, ChangeEvent, KeyboardEvent, useRef, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +12,8 @@ import { Ellipsis, Pencil, Trash } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useSheetStore } from "@/store/sheet";
+import toast from "react-hot-toast";
+import { updateConversation } from "@/actions/conversation";
 
 type SidebarItemProps = {
   item: {
@@ -30,6 +32,8 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
   const [value, setValue] = useState(item.label);
   const setOpen = useSheetStore((state) => state.setOpen);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   }
@@ -38,12 +42,36 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  const handleBlur = async() => {
+    setIsEditMode(false)
+    if (value !== label) {
+      try {
+        await updateConversation(id, value);
+      } catch(error) {
+        console.error(error);
+        toast.error("이름 수정에 실패했습니다.")
+      }
+    }
+  }
+
+  const handleKeyDown = async (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      await handleBlur();
+    }
+  }
+
   const clickEdit = (event: MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
 
     setIsEditMode(true);
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    if (isEditMode && inputRef.current) {
+      inputRef.current.focus();
+    }
+  },[isEditMode])
 
   return (
     <Link
@@ -65,6 +93,9 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
             value={value}
             onChange={handleChange}
             onClick={event => event.preventDefault()}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+            ref={inputRef}
             className="bg-transparent border border-zinc-400 rounded-sm px-2 py-1"
           />
         ) : (
