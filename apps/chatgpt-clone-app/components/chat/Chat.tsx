@@ -12,6 +12,7 @@ import { useModelStore } from "@/store/model";
 import { useParams, useRouter } from "next/navigation";
 import { createConversation, addMessages } from "@/actions/conversation";
 import { CHAT_ROUTES } from "@/constants/routes";
+import { useUserStore } from "@/store/user";
 
 type ChatProps = {
   initialMessages?: TMessage[];
@@ -20,6 +21,7 @@ type ChatProps = {
 const Chat = ({ initialMessages }: ChatProps) => {
   const params = useParams<{conversationId: string}>();
   const router = useRouter();
+  const user = useUserStore((state) => state.user);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { messages, setMessages, input, handleInputChange, handleSubmit } = useChat({
     onFinish: async(message) => {
@@ -63,7 +65,7 @@ const Chat = ({ initialMessages }: ChatProps) => {
           {messages.map((message) => (
             <Message
               key={message.id}
-              name={"user"}
+              name={user.name}
               content={message.content}
               role={message.role}
               />
