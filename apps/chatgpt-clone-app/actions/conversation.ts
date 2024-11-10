@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { verifySession } from "./sessions";
 import { conversation, message } from "@/db/schema";
 import { revalidatePath } from "next/cache";
-import { BASE_URL } from "@/constants/routes";
+import { BASE_URL, CHAT_ROUTES } from "@/constants/routes";
 
 export const addMessages = async (
   conversationId: string,
@@ -22,6 +22,8 @@ export const addMessages = async (
     content: assistantContent,
     role: "assistant"
   })
+  
+  revalidatePath(`${CHAT_ROUTES.CONVERSATIONS}/${conversationId}`)
 }
 
 export const createConversation = async (name: string) => {
