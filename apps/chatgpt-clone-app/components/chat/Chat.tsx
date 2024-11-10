@@ -56,7 +56,7 @@ const Chat = ({ initialMessages }: ChatProps) => {
   return (
     <div className="flex flex-col w-[80%] h-full mx-auto">
       <div className="flex-1">
-        {messages.length === 0 ? (
+        {!params.conversationId && messages.length === 0 ? (
           <Empty />
         ) : (
         <>
