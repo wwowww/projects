@@ -35,7 +35,7 @@ export const createConversation = async (name: string) => {
     })
     .returning();
 
-    revalidatePath(BASE_URL);
+    revalidatePath(BASE_URL); // 파라미터로 넘어온 경로의 페이지를 재검증해주는 함수로, 이 때 넘겨주는 경로는 파일 시스템의 라우터 세그먼트 경로 = 곧 url 경로 
 
   return result[0];
 }
