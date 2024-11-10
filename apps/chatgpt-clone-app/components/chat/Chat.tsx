@@ -21,7 +21,7 @@ const Chat = ({ initialMessages }: ChatProps) => {
   const params = useParams<{conversationId: string}>();
   const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  const { messages, setMessages, input, handleInputChange, handleSubmit } = useChat({
     onFinish: async(message) => {
       // param -> conversationId가 없으면 새로운 대화 페이지
       if (!params.conversationId) {
@@ -46,6 +46,12 @@ const Chat = ({ initialMessages }: ChatProps) => {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
+
+  useEffect(() => {
+    if (initialMessages) {
+      setMessages(initialMessages);
+    }
+  }, []);
 
   return (
     <div className="flex flex-col w-[80%] h-full mx-auto">

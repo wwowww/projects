@@ -1,5 +1,4 @@
 import Chat from "@/components/chat/Chat";
-import { getMessagesByConversation } from "@/data/conversation";
 
 type PageProps = {
   params: {
@@ -7,10 +6,9 @@ type PageProps = {
   }
 }
 
-const ChatPage = async ({ params: {conversationId}}: PageProps) => {
-  const messages = await getMessagesByConversation(conversationId);
+const ChatPage = ({ params: {conversationId}}: PageProps) => {
   return (
-    <Chat initialMessages={messages} />
+    <Chat />
   )
 }
 
