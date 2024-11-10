@@ -5,4 +5,6 @@ const nextConfig = {
   // 다른 설정 옵션들...
 }
 
+require('dotenv').config();
+
 module.exports = nextConfig;
