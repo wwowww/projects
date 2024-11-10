@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, MouseEvent, ChangeEvent } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,10 +26,23 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
   const { id, href, icon, label } = item;
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [value, setValue] = useState(item.label);
   const setOpen = useSheetStore((state) => state.setOpen);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  }
 
   const handleMenu = () => {
     setIsMenuOpen((prev) => !prev);
+  };
+
+  const clickEdit = (event: MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+
+    setIsEditMode(true);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -46,7 +59,17 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
       onClick={() => setOpen(false)}
     >
       <div className="flex items-center gap-2">
-        {icon} <div className="w-[180px] truncate">{label}</div>
+        {icon}
+        {isEditMode ? (
+          <input
+            value={value}
+            onChange={handleChange}
+            onClick={event => event.preventDefault()}
+            className="bg-transparent border border-zinc-400 rounded-sm px-2 py-1"
+          />
+        ) : (
+          <div className="w-[180px] truncate">{label}</div>
+        )}
       </div>
       {id !== "new" && (
         <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -61,7 +84,7 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem className="gap-2">
+            <DropdownMenuItem className="gap-2" onClick={clickEdit}>
               <Pencil size={18} />
               Edit
             </DropdownMenuItem>
